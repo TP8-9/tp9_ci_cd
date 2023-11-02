@@ -2,7 +2,7 @@ name: Deploy on tag
 on:
   push:
     tags:
-    - '*'
+    - '^v\d+_\d+_\d+$'
 jobs:
   build-and-deploy:
     runs-on: linux
