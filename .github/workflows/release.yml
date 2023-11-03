@@ -3,6 +3,7 @@ on:
   push:
     tags:
     - '^v\d+_\d+_\d+$'
+    
 jobs:
   build-and-deploy:
     runs-on: linux
@@ -10,3 +11,8 @@ jobs:
     - name: Checkout
       if: github.ref == 'refs/heads/main'
       uses: actions/checkout@v2
+    - name: Zip
+      if: github.ref == 'refs/heads/main'
+      uses: montudor/action-zip@v1
+      with:
+        args: zip -qq -r docker-gs-ping.zip docker-gs-ping
